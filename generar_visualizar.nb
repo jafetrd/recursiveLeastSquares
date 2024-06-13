@@ -1,0 +1,188 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5959,        178]
+NotebookOptionsPosition[      5466,        163]
+NotebookOutlinePosition[      5910,        179]
+CellTagsIndexPosition[      5867,        176]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "Generar", " ", "entradas", " ", "y", " ", "salidas", " ", 
+     "\"\<reales\>\""}], ",", " ", 
+    RowBox[{"Guardarlos", " ", 
+     RowBox[{"en", " ", ".", "txt"}]}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"t", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{"j", ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "0", ",", 
+         RowBox[{"10", "-", "0.01"}], ",", "0.01"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f", "=", 
+     RowBox[{
+      RowBox[{"Sin", "[", "t", "]"}], "+", 
+      RowBox[{"Sin", "[", 
+       RowBox[{"3", " ", "t"}], "]"}], "+", " ", 
+      RowBox[{"2", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"10", " ", "t"}], "]"}]}], "+", 
+      RowBox[{"0.1", 
+       RowBox[{"SquareWave", "[", 
+        RowBox[{"10", " ", "t"}], "]"}]}], "+", 
+      RowBox[{"0.1", 
+       RowBox[{"TriangleWave", "[", 
+        RowBox[{"20", "t"}], "]"}]}]}]}], ";"}], " ", 
+   RowBox[{"(*", 
+    RowBox[{"Entrada", " ", "medida"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"filtro", " ", "=", " ", 
+     RowBox[{"RecurrenceFilter", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1", ",", 
+           RowBox[{"-", "0.9"}], ",", "0.1"}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", 
+           RowBox[{"-", "3"}], ",", "0.2"}], "}"}]}], "}"}], ",", "f"}], 
+      "]"}]}], ";"}], " ", 
+   RowBox[{"(*", 
+    RowBox[{"Salida", " ", "medida"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dataListDoublePrecision", "=", 
+     RowBox[{"SetPrecision", "[", 
+      RowBox[{"f", ",", "15"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"formattedDataList", "=", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"Riffle", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"ToString", "[", 
+           RowBox[{"#", ",", "OutputForm"}], "]"}], "&"}], "/@", 
+         "dataListDoublePrecision"}], ",", "\"\< \>\""}], "]"}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+    "\"\<dataInput.txt\>\"", ",", "formattedDataList", ",", "\"\<Text\>\""}], 
+    "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dataListDoublePrecision", "=", 
+     RowBox[{"SetPrecision", "[", 
+      RowBox[{"filtro", ",", "15"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"formattedDataList", "=", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"Riffle", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"ToString", "[", 
+           RowBox[{"#", ",", "OutputForm"}], "]"}], "&"}], "/@", 
+         "dataListDoublePrecision"}], ",", "\"\< \>\""}], "]"}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+    "\"\<dataOutput.txt\>\"", ",", "formattedDataList", ",", "\"\<Text\>\""}],
+     "]"}]}]}]], "Input",ExpressionUUID->"d9b34768-c466-412f-835d-\
+5399f8f2758b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Visualizar", " ", "estimacion", " ", "de", " ", "theta", " ", "y", " ", 
+    "simular", " ", "filtro", " ", "con", " ", "valores", " ", "estimados"}], 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"dataTheta", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<C:\\\\Users\\\\h3_lp\\\\Downloads\\\\estimatedParams.txt\>\"", 
+       ",", "\"\<Data\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{"Transpose", "[", "dataTheta", "]"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"ultimoEstimado", " ", "=", "  ", 
+    RowBox[{"Join", "[", 
+     RowBox[{
+      RowBox[{"{", "1", "}"}], ",", 
+      RowBox[{"Last", "[", "dataTheta", "]"}]}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"filtroEstimado", " ", "=", 
+     RowBox[{"RecurrenceFilter", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"ultimoEstimado", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ";;", "3"}], "]"}], "]"}], ",", 
+         RowBox[{"ultimoEstimado", "[", 
+          RowBox[{"[", 
+           RowBox[{"4", ";;", "6"}], "]"}], "]"}]}], "}"}], ",", "f"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Transpose", "@", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "filtro"}], "}"}]}], ",", 
+       RowBox[{"Transpose", "@", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "filtroEstimado"}], "}"}]}]}], "}"}], ",", 
+     RowBox[{"PlotRange", "->", "All"}], ",", 
+     RowBox[{"PlotLegends", "->", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Real\>\"", ",", "\"\<Estimado\>\""}], "}"}]}]}], 
+    "]"}]}]}]], "Input",ExpressionUUID->"949e1ae7-acc1-425d-92d2-\
+5664f7c92a1d"]
+},
+WindowSize->{957.4285714285713, 847.7142857142857},
+WindowMargins->{{Automatic, 189}, {-22.28571428571422, Automatic}},
+FrontEndVersion->"13.3 para Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"f2ba2e8c-dbeb-4ad6-9283-fdd9c8c3fa73"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3056, 88, 345, "Input",ExpressionUUID->"d9b34768-c466-412f-835d-5399f8f2758b"],
+Cell[3617, 110, 1845, 51, 239, "Input",ExpressionUUID->"949e1ae7-acc1-425d-92d2-5664f7c92a1d"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
