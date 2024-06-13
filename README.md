@@ -78,7 +78,7 @@ El valor de la ganancia puede ser pequeño (ej. 1, 10, 50) si se cuenta con una 
 Las contribuciones son bienvenidas. Por favor, abre un issue o envía un pull request para contribuir al desarrollo de esta librería.
 
 # Bibliografia
-Adaptive Control: Second Edition Dover Books on Electrical Engineering. 	Karl J. Åström, Björn Wittenmark. Addison - Wesley Publishing Company, 1995.
+Adaptive Control: Second Edition. 	Karl J. Åström, Björn Wittenmark. Addison - Wesley Publishing Company, 1995.
 
 ## Requisitos
 
