@@ -1,5 +1,5 @@
 # recursiveLeastSquares
-Esta libreria implementa el algoritmo de mínimos cuadrados recursivos para identificar los parametros de un filtro IRR de la forma:
+Esta libreria implementa el algoritmo de mínimos cuadrados recursivos para identificar los parametros de un filtro IIR de la forma:
 
 $$ y_n = - \sum_{k=1}^{\min(n,N)} a_k y_{n-k} + \sum_{k=0}^{\min(n,M)} b_k u_{n-k} $$ 
 
