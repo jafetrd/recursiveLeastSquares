@@ -25,6 +25,9 @@ En la grafica se muestra como se sobreponen las señales generados por ambos fil
 
 ![image](https://github.com/jafetrd/recursiveLeastSquares/assets/20916745/87925dfb-5e6e-4e4c-a8f0-b0777b4ef83c)
 
+y la grafica de actualización de parametros donde se observa la convergencia de cada uno 
+
+![image](https://github.com/jafetrd/recursiveLeastSquares/assets/20916745/2ceed645-63f5-4f56-9f38-49847028ac02)
 
 # Documentación
 Para hacer uso hay que agregarla al proyecto con:
