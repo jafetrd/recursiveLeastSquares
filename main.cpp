@@ -33,28 +33,28 @@ void _abrirDatos(const std::string& filename, double* arreglo, int L){
 }
 
 int main() {   
-    int L = 500; // Cantidad de medicion a usar
+    int L = 500; // Numero de mediciones a usar
     
     double u[L];
     double y[L];
     
     _abrirDatos("dataInput.txt", u, L); // Archivo con mediciones de entrada
     _abrirDatos("dataOutput.txt", y, L); // Archivo con mediciones de salida
-    std::ofstream outFile("estimatedParams.txt"); // Crear y abrir un archivo de texto
+    std::ofstream outFile("estimatedParams.txt"); // Crear historial de parámetros estimados
     
     int M = 3; // Cantidad de coeficientes de numerador a estimar
     int N = 2; // Cantidad de coeficientes de denominador a estimar
     double lambda = 1.0; // Factor de olvido
     double gain = 100000; // Ganancia inicial de matriz de covarianza
   
-    double theta_hat[M+N]; //Vector de parametros estimados
+    double theta_hat[M+N]; //Vector de parámetros estimados
     
     estimationFilters RLS(N,M,lambda,gain,theta_hat); //Crear objeto
     
     for(int i = 0; i < L;i++){
         RLS._estimationRLS(u[i],y[i],theta_hat); 
 
-      //Guardar cada estimacion en estimatedParams.txt para verla en Mathematica
+      //Guardar cada estimación en estimatedParams.txt para verla en Mathematica
         for (int i = 0; i < M+N-1; i++) {
             outFile << std::fixed << std::setprecision(15) << theta_hat[i] << ",";
         }
