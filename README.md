@@ -1,7 +1,15 @@
 # recursiveLeastSquares
-Esta libreria implementa minimos cuadrados recursivos para identificar los parametros de un filtro IRR de la forma:
+Esta libreria implementa el algoritmo de mínimos cuadrados recursivos para identificar los parametros de un filtro IRR de la forma:
 
 $$ y_n = - \sum_{k=1}^{\min(n,N)} a_k y_{n-k} + \sum_{k=0}^{\min(n,M)} b_k u_{n-k} $$ 
+
+El algoritmo es una implementación directa del siguiente conjunto de ecuaciones adaptando el tamaño de las matrices y vectores para el caso de una entrada una salida
+
+$$ \widehat{\theta}_t = \widehat{\theta}_{t-1} + K_t (y_t - \psi_t^T \widehat{\theta}_{t-1}) $$ 
+
+$$ K_t =  P_{t-1} \psi_t (\lambda I + \psi^T_t P_{t-1} \psi_t)^{-1} $$
+
+$$ P_t = (I - K_t \psi^T )P_{t-1}/\lambda $$
 
 Ademas se incluye una libreta en Mathematica que genera los archivos **dataInput.txt** y **dataOutput.txt** que corresponden a las "mediciones" de la entrada y salida del sistema a identificar que son usadas en el archivo **main.cpp**, este a su vez genera el historial de la identificacion de parametros almacenado en **estimatedParams.txt** archivo usado en la libreta Mathematica para ser graficados y comparar el modelo "real" contra el modelo estimado. A continuación el modelo real $G$ y el estimado $\widehat{G}$, 
 
@@ -70,7 +78,7 @@ El valor de la ganancia puede ser pequeño (ej. 1, 10, 50) si se cuenta con una 
 Las contribuciones son bienvenidas. Por favor, abre un issue o envía un pull request para contribuir al desarrollo de esta librería.
 
 # Bibliografia
-
+Adaptive Control: Second Edition Dover Books on Electrical Engineering. 	Karl J. Åström, Björn Wittenmark. Addison - Wesley Publishing Company, 1995.
 
 ## Requisitos
 
