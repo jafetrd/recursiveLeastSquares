@@ -1,26 +1,25 @@
-#ifndef ESTIMATION_FILTER_H
-#define ESTIMATION_FILTER_H
+#ifndef ESTIMATION_FILTERS_H
+#define ESTIMATION_FILTERS_H
 
 struct _configRLS {
     int _M;
     int _N;
     int _MN;
     int _MNt;
-    double _psi[_MN]; 
-    double _P[_MNt]; 
-    
     double _y_hat; 
     double _lambda; 
     double _inv_lambda;
-}
+    double* _psi; 
+    double* _P;
+};
 
-class estimationFilter {
+class estimationFilters {
  public:
-    estimationFilter(int M, int N, double lambda, double Gain, double* theta_hat);
+    estimationFilters(int M, int N, double lambda, double Gain, double* theta_hat);
     void _estimationRLS(double u, double y, double* theta_hat);
     
  private:
-     _configRLS _cRLS;
+    _configRLS _RLS;
 };
 
 #endif
