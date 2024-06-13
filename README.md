@@ -3,7 +3,16 @@ Esta libreria implementa minimos cuadrados recursivos para identificar los param
 
 $$ y_n = - \sum_{k=1}^{\min(n,N)} a_k y_{n-k} + \sum_{k=0}^{\min(n,M)} b_k u_{n-k} $$ 
 
-Ademas se incluye una libreta en Mathematica que genera los archivos **dataInput** y **dataOutput** que corresponden a las "mediciones" de la entrada y salida del sistema a identificar que son usadas en el archivo **main.cpp**, este a su vez genera el historial de la identificacion de parametros almacenado en **estimatedParams.txt" archivo usado en la libreta Mathematica para ser graficados y comparar el modelo "real" contra el modelo estimado. 
+Ademas se incluye una libreta en Mathematica que genera los archivos **dataInput.txt** y **dataOutput.txt** que corresponden a las "mediciones" de la entrada y salida del sistema a identificar que son usadas en el archivo **main.cpp**, este a su vez genera el historial de la identificacion de parametros almacenado en **estimatedParams.txt** archivo usado en la libreta Mathematica para ser graficados y comparar el modelo "real" contra el modelo estimado. A continuación el modelo real $G$ y el estimado $\widehat{G}$, 
+
+$$ G(z^{-1}) = \frac{1 - 3 z^{-1} + 0.2 z^{-2}}{1 - 0.9 z^{-1} + 0.1 z^{-2}} $$ 
+
+$$ \widehat{G} (z^{-1} ) = \frac{1.0492 -2.18383 z^{-1} - 2.4286 z^{-2}}{1 - 0.0316771 z^{-1} - 0.572705 z^{-2}} $$
+
+En la grafica se muestra como se sobreponen las señales generados por ambos filtros para la misma señal de entrada
+
+![image](https://github.com/jafetrd/recursiveLeastSquares/assets/20916745/87925dfb-5e6e-4e4c-a8f0-b0777b4ef83c)
+
 
 ### Ejecuta en linea 
 <https://onlinegdb.com/YrTfwFJxB>
