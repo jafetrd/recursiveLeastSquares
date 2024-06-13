@@ -25,7 +25,7 @@ En la grafica se muestra como se sobreponen las señales generados por ambos fil
 
 ![image](https://github.com/jafetrd/recursiveLeastSquares/assets/20916745/87925dfb-5e6e-4e4c-a8f0-b0777b4ef83c)
 
-y la grafica de actualización de parametros donde se observa la convergencia de cada uno 
+y la grafica de actualización de parametros donde se observa la convergencia de cada uno, solo aparecen 5 trayectorias porque el uno del denominador es fijo, por ello se estiman 3 parametros para el numerador $M=3$ y 2 para denominador $N=2$. 
 
 ![image](https://github.com/jafetrd/recursiveLeastSquares/assets/20916745/2ceed645-63f5-4f56-9f38-49847028ac02)
 
